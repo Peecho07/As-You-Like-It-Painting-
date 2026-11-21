@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64">
+  <g transform="translate(4 4) scale(1.1667)"><rect x="2" y="2" width="44" height="44" rx="11" fill="#1f4a44"/>
+  <path d="M21.5 12.6C28 10.2 35 8.4 42.4 7.6c1.4 1.3 1.5 3.4.2 4.8-7.2.6-14.2 2-21.1 4.1z" fill="#e0a526"/>
+  <path d="M33 10.2l9.6-1.3M35 13.4l7.4-.6" stroke="#f3c75a" stroke-width=".9" stroke-linecap="round"/>
+  <path d="M14.6 11.2L19 6.8l4.4 4.4z" fill="#f7f3ec"/>
+  <rect x="16" y="11.2" width="6" height="4.4" rx=".8" fill="#e0a526"/>
+  <rect x="14.4" y="15.4" width="9.2" height="1.8" rx=".9" fill="#f7f3ec"/>
+  <path d="M16.2 17.2h5.6l2.7 19.6h-11z" fill="#b23e27"/>
+  <path d="M15.4 23h7.2l.4 3h-8z" fill="#f7f3ec"/>
+  <rect x="17.8" y="30.6" width="2.4" height="6.2" rx="1.2" fill="#12302c"/>
+  <path d="M7 38.4c2.6-1.8 5.4-1.8 8 0s5.4 1.8 8 0 5.4-1.8 8 0 5.4 1.8 8 0" stroke="#9db3a6" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <path d="M11 42.4c2.6-1.6 5.4-1.6 8 0s5.4 1.6 8 0 5.4-1.6 8 0" stroke="#9db3a6" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".6"/></g>
+  <text x="76" y="34" font-family="'Young Serif', Georgia, serif" font-size="27" fill="#ffffff">As You Like It</text>
+  <text x="77" y="54" font-family="Figtree, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2.6" fill="#9db3a6">PAINTING COMPANY · EST. 1983</text>
+</svg>
