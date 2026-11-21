@@ -48,7 +48,7 @@ ICONS = {
 
 SERVICES = [
     {
-        "slug": "interior-painting", "name": "Interior Painting", "swatch": "Gesso White", "color": "#ece4d4",
+        "slug": "interior-painting", "photo": "img/stock/svc-interior.jpg", "name": "Interior Painting", "swatch": "Gesso White", "color": "#ece4d4",
         "light": True, "icon": "roller",
         "short": "Walls, ceilings, doors, and trim, with drywall repair and texture matching done first.",
         "h1": "Interior painting that looks sharp up close.",
@@ -65,7 +65,7 @@ SERVICES = [
                 ("What sheen should I use?", "It depends on the room. Flat or matte hides imperfections on ceilings and walls. Satin or semi-gloss holds up better in kitchens, baths, and on trim. We'll recommend what fits each space.")],
     },
     {
-        "slug": "exterior-painting", "name": "Exterior Painting", "swatch": "Inlet Teal", "color": "#1f4a44",
+        "slug": "exterior-painting", "photo": "img/stock/svc-exterior.jpg", "name": "Exterior Painting", "swatch": "Inlet Teal", "color": "#1f4a44",
         "icon": "home",
         "short": "Stucco, block, wood, and trim, prepped and coated to hold up to sun, salt, and storms.",
         "h1": "Exterior painting made for Florida weather.",
@@ -82,7 +82,7 @@ SERVICES = [
                 ("What about rain?", "We watch the forecast and schedule around it. If weather moves in, we pause and pick back up when surfaces are dry.")],
     },
     {
-        "slug": "cabinet-refinishing", "name": "Cabinet Refinishing", "swatch": "Harbor Navy", "color": "#23344f",
+        "slug": "cabinet-refinishing", "photo": "img/stock/svc-cabinets.jpg", "name": "Cabinet Refinishing", "swatch": "Harbor Navy", "color": "#23344f",
         "icon": "cabinet",
         "short": "A new kitchen look for a fraction of replacement cost. Cleaned, sanded, primed, and sprayed.",
         "h1": "Cabinet refinishing that looks factory-made.",
@@ -98,7 +98,7 @@ SERVICES = [
                 ("Do you replace hardware?", "We remove and reinstall your existing hardware, or install new hardware you've picked out.")],
     },
     {
-        "slug": "commercial-painting", "name": "HOA & Commercial", "swatch": "Coquina Stone", "color": "#b7a98f",
+        "slug": "commercial-painting", "photo": "img/stock/svc-commercial.jpg", "name": "HOA & Commercial", "swatch": "Coquina Stone", "color": "#b7a98f",
         "light": True, "icon": "building",
         "short": "Condos, HOAs, offices, and retail. Scheduled around residents, tenants, and business hours.",
         "h1": "HOA, condo, and commercial painting.",
@@ -115,7 +115,7 @@ SERVICES = [
                 ("Do you handle rental turnovers?", "Yes. We paint apartments and rental units between tenants.")],
     },
     {
-        "slug": "trim-carpentry", "name": "Trim Carpentry", "swatch": "Driftwood", "color": "#8a7660",
+        "slug": "trim-carpentry", "photo": "img/stock/svc-trim.jpg", "name": "Trim Carpentry", "swatch": "Driftwood", "color": "#8a7660",
         "icon": "ruler",
         "short": "Crown molding, baseboards, and wood repair, installed and painted by the same crew.",
         "h1": "Trim carpentry and molding.",
@@ -129,7 +129,7 @@ SERVICES = [
                 ("Do you supply the molding?", "We can supply it or install trim you've already picked out.")],
     },
     {
-        "slug": "wood-graining", "name": "Faux Wood Graining", "swatch": "Cypress Grain", "color": "#6b4a2f",
+        "slug": "wood-graining", "photo": "img/stock/svc-faux.jpg", "name": "Faux Wood Graining", "swatch": "Cypress Grain", "color": "#6b4a2f",
         "icon": "grain",
         "short": "Hand-painted wood grain on doors and garage doors. Real wood look, no rot or warping.",
         "h1": "Faux wood graining and decorative finishes.",
@@ -144,7 +144,7 @@ SERVICES = [
                 ("How long does it last?", "With a protective clear coat, a grained door holds up for years. Sun exposure is the biggest factor.")],
     },
     {
-        "slug": "epoxy-coatings", "name": "Epoxy Floors", "swatch": "Flake Gray", "color": "#7b8285",
+        "slug": "epoxy-coatings", "photo": "img/stock/svc-epoxy.jpg", "name": "Epoxy Floors", "swatch": "Flake Gray", "color": "#7b8285",
         "icon": "layers",
         "short": "Garage and patio floors coated to resist stains, hot tires, and Florida humidity.",
         "h1": "Epoxy floor coatings for garages and more.",
@@ -158,7 +158,7 @@ SERVICES = [
                 ("Is it slippery?", "Decorative flakes add texture. Ask us about options if slip resistance matters for your space.")],
     },
     {
-        "slug": "palm-beach-pressure-washing", "name": "Pressure Cleaning", "swatch": "Seaspray", "color": "#9db3a6",
+        "slug": "palm-beach-pressure-washing", "photo": "img/stock/svc-pressure.jpg", "name": "Pressure Cleaning", "swatch": "Seaspray", "color": "#9db3a6",
         "light": True, "icon": "droplets",
         "short": "Walls, roofs, driveways, and pavers cleaned of mildew and grime. Paver sealing available.",
         "h1": "Pressure cleaning in Palm Beach County.",
@@ -172,7 +172,7 @@ SERVICES = [
                 ("Do I need to be home?", "No, as long as we can reach an outdoor water spigot. We'll confirm details when we schedule.")],
     },
     {
-        "slug": "popcorn-ceiling-removal", "name": "Popcorn Ceiling Removal", "swatch": "Stucco Sand", "color": "#d9cbb1",
+        "slug": "popcorn-ceiling-removal", "photo": "img/stock/svc-popcorn.jpg", "name": "Popcorn Ceiling Removal", "swatch": "Stucco Sand", "color": "#d9cbb1",
         "light": True, "icon": "sparkles",
         "short": "Dated textured ceilings removed, smoothed or re-textured, then painted.",
         "h1": "Popcorn ceiling removal.",
@@ -251,13 +251,15 @@ HOME_FAQ = [
 ]
 
 GALLERY = [
-    {"cat": "exterior", "title": "Full exterior repaint", "place": "Jupiter", "color": "#1f4a44", "file": "exterior-jupiter.jpg"},
-    {"cat": "interior", "title": "Living room and kitchen", "place": "Palm Beach Gardens", "color": "#d9cbb1", "file": "interior-pbg.jpg"},
-    {"cat": "cabinets", "title": "Kitchen cabinets, wood to white", "place": "Tequesta", "color": "#23344f", "file": "cabinets-tequesta.jpg"},
-    {"cat": "faux", "title": "Faux wood grain garage door", "place": "Jupiter Farms", "color": "#6b4a2f", "file": "faux-garage.jpg"},
-    {"cat": "commercial", "title": "Condo common areas", "place": "Juno Beach", "color": "#b7a98f", "file": "condo-juno.jpg"},
-    {"cat": "exterior", "title": "Stucco repair and repaint", "place": "North Palm Beach", "color": "#9db3a6", "file": "stucco-npb.jpg"},
-    {"cat": "faux", "title": "Front entry door graining", "place": "Palm Beach", "color": "#8a7660", "file": "faux-door.jpg"},
-    {"cat": "interior", "title": "Popcorn removal and repaint", "place": "Stuart", "color": "#ece4d4", "file": "ceiling-stuart.jpg"},
-    {"cat": "commercial", "title": "Office repaint", "place": "West Palm Beach", "color": "#7b8285", "file": "office-wpb.jpg"},
+    # real: True = an As You Like It job photo (from the company SmugMug). Stock photos are labeled on the page; swap them for real jobs.
+    {"cat": "commercial", "title": "Commercial repaint", "place": "Our crew on site", "img": "gallery/commercial-lift.jpg", "real": True,
+     "alt": "As You Like It painters on a boom lift repainting a stucco office building, company truck parked out front"},
+    {"cat": "exterior", "title": "Stucco exterior", "place": "Exterior painting", "img": "stock/gal-ext-1.jpg", "alt": "Modern white stucco home with a pool"},
+    {"cat": "interior", "title": "Open living and dining", "place": "Interior painting", "img": "stock/gal-int-1.jpg", "alt": "Bright living room with freshly painted walls"},
+    {"cat": "cabinets", "title": "White kitchen cabinets", "place": "Cabinet refinishing", "img": "stock/gal-cab.jpg", "alt": "Kitchen with white painted cabinets"},
+    {"cat": "faux", "title": "Wood-tone feature wall", "place": "Faux finishes", "img": "stock/gal-faux.jpg", "alt": "Living room with a wood-grain feature wall"},
+    {"cat": "exterior", "title": "Two-story repaint", "place": "Exterior painting", "img": "stock/gal-ext-2.jpg", "alt": "Two-story home exterior with fresh paint"},
+    {"cat": "interior", "title": "Living room refresh", "place": "Interior painting", "img": "stock/gal-int-2.jpg", "alt": "Sunny living room with white walls"},
+    {"cat": "interior", "title": "Clean white walls and trim", "place": "Interior painting", "img": "stock/gal-int-3.jpg", "alt": "Minimal room with white walls and a yellow chair"},
+    {"cat": "commercial", "title": "Condo and HOA buildings", "place": "HOA & commercial", "img": "stock/svc-commercial.jpg", "alt": "Multi-story condominium building"},
 ]

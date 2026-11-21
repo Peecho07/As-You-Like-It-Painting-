@@ -38,6 +38,32 @@ LOGO = f'''<svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
 </svg>'''
 
 
+def brand_lockup(uid, href="index.html", label=True):
+    """Company logo icon + name + animated brush that paints a stroke under the name."""
+    aria = ' aria-label="As You Like It Painting Company, home"' if label else ""
+    return f"""<a class="brand" href="{href}"{aria}>
+      <span class="brand__logo-wrap"><img class="brand__logo" src="img/logo-icon.png" width="235" height="301" alt=""></span>
+      <span class="brand__text">
+        <span class="brand__name">As You Like It</span>
+        <span class="brand__paint" aria-hidden="true">
+          <svg class="brand__stroke-svg" viewBox="0 0 150 12" preserveAspectRatio="none">
+            <defs><linearGradient id="bp-{uid}" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#2493aa"/><stop offset=".55" stop-color="#f2a032"/><stop offset="1" stop-color="#dc4a30"/>
+            </linearGradient></defs>
+            <path class="brand__stroke" d="M4 7.2C28 4.2 52 9.6 78 6.6S124 5 146 6.4" stroke="url(#bp-{uid})" pathLength="100"/>
+          </svg>
+          <svg class="brand__brush" viewBox="0 0 32 32">
+            <rect x="17.5" y="1" width="5" height="15" rx="2.5" transform="rotate(28 20 8.5)" fill="#064d6f"/>
+            <rect x="12.2" y="12.6" width="7.4" height="5" rx="1" transform="rotate(28 16 15)" fill="#9aa7ad"/>
+            <path d="M9.6 17.4l6.6 3.5-2.3 5.6c-.7 1.6-2.8 2.1-4.6 1.2-1.8-1-2.4-3-1.7-4.6z" fill="#f2a032"/>
+            <path d="M8.2 24.6c-.6 1.4-.2 2.6 1 3.2" stroke="#dc4a30" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="brand__sub">Painting Company</span>
+      </span>
+    </a>"""
+
+
 def stripes(cls):
     return f'<div class="{cls}" aria-hidden="true">' + "".join(
         f'<span style="background:{c}"></span>' for c in STRIPES) + "</div>"
@@ -60,7 +86,7 @@ def head(title, desc, path, extra=""):
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{BIZ['url']}img/og-image.png">
 <meta name="theme-color" content="#12302c">
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,10 +117,7 @@ def header(active=""):
 </div>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="As You Like It Painting Company, home">
-      {LOGO}
-      <span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span>
-    </a>
+    {brand_lockup('h')}
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
       {icon('menu')}
     </button>
@@ -143,7 +166,7 @@ def footer():
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html">{LOGO}<span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span></a>
+        {brand_lockup('f', label=False)}
         <p>Family-owned interior and exterior painting for homes, condos, HOAs, and commercial properties across Palm Beach and Martin County since 1983.</p>
         <p class="mb-0"><a href="tel:{BIZ['tel']}"><strong>{BIZ['phone']}</strong></a> (call or text)<br><a href="mailto:{BIZ['email']}">{BIZ['email']}</a></p>
       </div>
@@ -185,34 +208,51 @@ def footer():
 """
 
 
-def page_hero(eyebrow, title, lede, crumbs, buttons=True, palette=None):
+def page_hero(eyebrow, title, lede, crumbs, buttons=True, palette=None, photo=None, photo_alt="", stock=True):
     crumb_html = "".join(
         f'<li><a href="{href}">{label}</a></li>' if href else f'<li aria-current="page">{label}</li>'
         for label, href in crumbs)
     stripe_cols = palette or STRIPES
-    stripe = '<div class="page-hero__stripe" aria-hidden="true">' + "".join(
-        f'<span style="background:{c}"></span>' for c in stripe_cols) + "</div>"
+    spans = "".join(f'<span style="background:{c}"></span>' for c in stripe_cols)
     btns = f"""<div class="btn-row">
       <a class="btn" href="contact.html">Get a free estimate</a>
       <a class="btn btn--ghost" href="tel:{BIZ['tel']}">{icon('phone')} Call or text</a>
     </div>""" if buttons else ""
-    return f"""<section class="page-hero">
-  {stripe}
-  <div class="wrap">
+    text = f"""<div class="page-hero__text">
     <nav class="crumbs" aria-label="Breadcrumb"><ol>{crumb_html}</ol></nav>
     <p class="eyebrow">{eyebrow}</p>
     <h1>{title}</h1>
     <p class="lede">{lede}</p>
     {btns}
+    </div>"""
+    if photo:
+        tag = '<span class="photo-slot__tag">Stock photo</span>' if stock else ""
+        return f"""<section class="page-hero page-hero--photo">
+  <div class="wrap page-hero__grid">
+    {text}
+    <figure class="page-hero__media">
+      <div class="page-hero__img"><img src="{photo}" alt="{photo_alt}" width="1200" height="800" fetchpriority="high">{tag}</div>
+      <div class="page-hero__chipbar" aria-hidden="true">{spans}</div>
+    </figure>
+  </div>
+</section>
+"""
+    return f"""<section class="page-hero">
+  <div class="page-hero__stripe" aria-hidden="true">{spans}</div>
+  <div class="wrap">
+    {text}
   </div>
 </section>
 """
 
 
 def chip_card(s, i):
-    light = " chip__swatch--light" if s.get("light") else ""
+    light = " chip__badge--light" if s.get("light") else ""
     return f"""<a class="chip reveal" href="{s['slug']}.html">
-  <div class="chip__swatch{light}" style="background:{s['color']}">{icon(s['icon'])}</div>
+  <div class="chip__swatch" style="--swatch:{s['color']}">
+    <img src="{s['photo']}" alt="" loading="lazy" decoding="async" width="1200" height="800">
+    <span class="chip__badge{light}" style="background:{s['color']}">{icon(s['icon'])}</span>
+  </div>
   <div class="chip__body">
     <span class="chip__no">No. {i:02d} &middot; {s['swatch']}</span>
     <h3 class="chip__name">{s['name']}</h3>
@@ -351,8 +391,8 @@ def build_home():
 <section class="section section--paper" aria-labelledby="who-title">
   <div class="wrap split">
     <div class="photo-slot reveal" style="--slot:linear-gradient(160deg,#1f4a44,#12302c)">
-      <!-- PHOTO SLOT: replace with <img src="img/home-exterior.jpg" alt="..."> -->
-      <span class="photo-slot__cap">Exterior repaint, Jupiter</span>
+      <img src="img/gallery/commercial-lift.jpg" alt="As You Like It painters on a boom lift repainting a stucco office building" loading="lazy" width="1024" height="768">
+      <span class="photo-slot__cap">Our crew on a commercial repaint</span>
     </div>
     <div>
       <p class="eyebrow">Homes, condos, HOAs, commercial</p>
@@ -401,7 +441,9 @@ def build_service(s, idx):
                 s["meta"], f"{s['slug']}.html", faq_schema(s["faq"]))
     html += header()
     html += page_hero(f"Service No. {idx:02d} &middot; {s['swatch']}", s["h1"], s["intro"],
-                      [("Home", "index.html"), ("Services", "services.html"), (s["name"], None)], palette=palette)
+                      [("Home", "index.html"), ("Services", "services.html"), (s["name"], None)], palette=palette,
+                      **({"photo": "img/gallery/commercial-lift.jpg", "photo_alt": "As You Like It painters on a boom lift repainting a stucco office building", "stock": False}
+                         if s["slug"] == "commercial-painting" else {"photo": s["photo"], "photo_alt": s["name"] + " project"}))
     html += f"""<section class="section">
   <div class="wrap service-layout">
     <div class="prose">
@@ -462,7 +504,8 @@ def build_residential():
     html += header("residential")
     html += page_hero("For homeowners", "Your house, painted like it's ours.",
                       "We've been painting North County homes since 1983. Clean crews, real prep, and a finish that holds up to Florida weather.",
-                      [("Home", "index.html"), ("Homeowners", None)])
+                      [("Home", "index.html"), ("Homeowners", None)],
+                      photo="img/stock/res-exterior.jpg", photo_alt="White two-story home with a wraparound porch")
     html += f"""<section class="section">
   <div class="wrap split">
     <div>
@@ -472,8 +515,8 @@ def build_residential():
       {checks(["Floors, furniture, and fixtures protected before work starts", "Daily cleanup, no paint cans left in your hallway", "One point of contact from estimate to walkthrough", "We tell you what's wrong before we cover it up"])}
     </div>
     <div class="photo-slot reveal" style="--slot:linear-gradient(160deg,#d9cbb1,#b7a98f)">
-      <!-- PHOTO SLOT: interior living room -->
-      <span class="photo-slot__cap">Interior repaint, Palm Beach Gardens</span>
+      <img src="img/stock/home-interior.jpg" alt="Bright living room with freshly painted white walls" loading="lazy" width="1200" height="800">
+      <span class="photo-slot__tag">Stock photo</span>
     </div>
   </div>
 </section>
@@ -564,6 +607,10 @@ def build_about():
       {checks(["Proper preparation on every surface", "Premium materials suited to Florida conditions", "Clear written estimates, so you know exactly what you're paying for", "Clean, respectful, professional crews", "We protect your property and stand behind finished work"])}
     </div>
     <div>
+      <figure class="team-photo">
+        <div class="photo-slot"><img src="img/gallery/team.jpg" alt="Three members of the As You Like It Painting family standing in front of the company truck" loading="lazy" width="895" height="768"></div>
+        <figcaption>The family behind As You Like It, with the company truck.</figcaption>
+      </figure>
       <div class="stat-row" style="grid-template-columns:1fr 1fr">
         <div class="stat"><b>1983</b><span>Founded in North County</span></div>
         <div class="stat"><b>40+</b><span>Years of experience</span></div>
@@ -592,14 +639,14 @@ def build_gallery():
     btns = "".join(f'<button type="button" data-filter="{k}" aria-pressed="{"true" if k == "all" else "false"}">{v}</button>' for k, v in cats)
     tiles = "".join(
         f"""<figure class="tile reveal" data-cat="{g['cat']}">
-  <div class="photo-slot" style="--slot:{g['color']}"><!-- PHOTO SLOT: img/gallery/{g['file']} --></div>
+  <div class="photo-slot"><img src="img/{g['img']}" alt="{g['alt']}" loading="lazy" decoding="async">{'' if g.get('real') else '<span class="photo-slot__tag">Stock photo</span>'}</div>
   <figcaption><b>{g['title']}</b><span>{g['place']}</span></figcaption>
 </figure>""" for g in GALLERY)
     html = head("Our Work | Painting Project Gallery | As You Like It Painting",
                 "Photos of interior, exterior, cabinet, faux wood graining and commercial painting projects across Palm Beach and Martin County.",
                 "gallery.html")
     html += header("gallery")
-    html += page_hero("Our work", "Recent projects", "A sample of jobs from around North County. The full archive of photos lives on our gallery site.",
+    html += page_hero("Our work", "Recent projects", "Real jobs from our crews, plus sample photos of the work we do while we add more of our own. The full archive lives on our gallery site.",
                       [("Home", "index.html"), ("Our work", None)], buttons=False)
     html += f"""<section class="section"><div class="wrap">
   <div class="filters" role="group" aria-label="Filter projects">{btns}</div>
@@ -769,36 +816,40 @@ def build_404():
 
 def build_brand():
     big = LOGO.replace('class="brand__mark"', 'class="brand-show__mark"')
-    sw = [("Inlet Green", "#1f4a44", "Primary brand color"), ("Lighthouse Red", "#b23e27", "Calls to action"),
-          ("Beacon Gold", "#e0a526", "The brushstroke beam"), ("Seaspray Sage", "#9db3a6", "Water, accents"),
-          ("Gesso", "#f7f3ec", "Paper and backgrounds"), ("Ink", "#14231f", "Text")]
+    sw = [("Harbor Navy", "#064d6f", "House outline, headlines"), ("Pool Teal", "#2493aa", "Paint drips, accents"),
+          ("Sunset Orange", "#f2a032", "Brushstroke highlight"), ("Coral Red", "#dc4a30", "Paint, calls to action"),
+          ("Inlet Green", "#1f4a44", "Site backgrounds"), ("Gesso", "#f7f3ec", "Paper and backgrounds")]
     chips = "".join(f'<div class="brand-swatch"><span style="background:{c}"></span><b>{n}</b><code>{c}</code><small>{u}</small></div>' for n, c, u in sw)
-    html = head("Our New Logo | As You Like It Painting Company",
-                "The new As You Like It Painting logo: the Jupiter Lighthouse with a brushstroke beam, over Intracoastal water.",
+    html = head("Our Logo | As You Like It Painting Company",
+                "The As You Like It Painting logo: a house painted by a dripping brush, plus the animated brush lockup used across the site.",
                 "brand.html")
     html += header()
-    html += page_hero("Brand", "A new mark for 43 years of painting.",
-                      "The Jupiter Lighthouse, painted. Its beam is a single brushstroke of gold, sweeping out over the Intracoastal. Local, crafted, and easy to spot.",
+    html += page_hero("Brand", "Our logo.",
+                      "A house painted with a single dripping brush, in teal, orange and coral. On the site it sits beside our name, with a brush that paints a stroke underneath.",
                       [("Home", "index.html"), ("Brand", None)], buttons=False)
     html += f"""<section class="section"><div class="wrap">
   <div class="brand-show">
-    <div class="brand-show__stage">{big}</div>
-    <div class="brand-show__stage brand-show__stage--dark"><a class="brand" href="index.html">{LOGO}<span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span></a></div>
-    <div class="brand-show__stage"><a class="brand" href="index.html">{LOGO}<span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span></a></div>
+    <div class="brand-show__stage brand-show__stage--white"><img class="brand-show__full" src="img/logo-full.png" width="400" height="400" alt="As You Like It Painting logo"></div>
+    <div class="brand-show__stage">{brand_lockup('b1')}</div>
+    <div class="brand-show__stage brand-show__stage--dark footer-brand">{brand_lockup('b2', label=False)}</div>
   </div>
   <div class="brand-notes">
-    <div><h3>The lighthouse</h3><p>Jupiter Inlet Lighthouse has guided boats home since 1860. It says "we're from here" without a word, and its red matches our call-to-action color.</p></div>
-    <div><h3>The brushstroke beam</h3><p>The light is a tapered gold brushstroke with visible bristle lines. It tells you what we do: painting, done by hand, with care.</p></div>
-    <div><h3>The water</h3><p>Two sage waves for the Intracoastal and the Loxahatchee, the waterways our crews have worked along since 1983.</p></div>
+    <div><h3>The house</h3><p>Homes are most of what we paint. The navy outline keeps the mark readable at any size.</p></div>
+    <div><h3>The brush</h3><p>The brush handle is the left wall of the house. Paint drips from it, so you can tell what we do at a glance.</p></div>
+    <div><h3>The animated stroke</h3><p>In the site header a small brush paints a teal-to-coral stroke under the name, then fades and repeats. It stays still for visitors who turn off motion.</p></div>
   </div>
   <h2 class="brand-page-h2">Colors</h2>
   <div class="brand-swatches">{chips}</div>
   <h2 class="brand-page-h2">Download</h2>
   <div class="btn-row">
-    <a class="btn" href="img/logo.svg" download>Full logo (SVG)</a>
-    <a class="btn btn--ghost" href="img/logo-light.svg" download>Full logo, light (SVG)</a>
-    <a class="btn btn--ghost" href="img/logo-mark.svg" download>Mark only (SVG)</a>
-    <a class="btn btn--ghost" href="img/logo-mark-512.png" download>Mark (PNG 512)</a>
+    <a class="btn" href="img/logo-full.png" download>Full logo (PNG)</a>
+    <a class="btn btn--ghost" href="img/logo-icon.png" download>Icon only (PNG)</a>
+  </div>
+  <h2 class="brand-page-h2">Alternate mark (concept)</h2>
+  <div class="brand-alt">
+    <div class="brand-show__stage">{big}</div>
+    <p>An alternate concept we drew: the Jupiter Lighthouse with a gold brushstroke beam over Intracoastal water. It isn't used on the site. It's here as an option for shirts, truck decals, or a local-pride mark.</p>
+    <div class="btn-row"><a class="btn btn--ghost" href="img/logo-mark.svg" download>Lighthouse mark (SVG)</a><a class="btn btn--ghost" href="img/logo-mark-512.png" download>Lighthouse mark (PNG)</a></div>
   </div>
 </div></section>"""
     html += cta_band()

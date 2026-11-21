@@ -61,7 +61,12 @@ Business facts in markup (phone, license numbers, links) come from `BIZ` in `bui
 One-time setup: repo **Settings > Pages > Build and deployment > Source: GitHub Actions**.
 Live URL: `https://<your-username>.github.io/<repo-name>/`. For a custom domain (asyoulikeitpainting.com), add it under Settings > Pages and point DNS at GitHub.
 
-## Logo
+## Logo and photos
+Header and footer use the company's own logo (`site/img/logo-icon.png`, cropped from `logo-full.png`), with an animated brush that paints a stroke under the name (`brand_lockup()` in build.py, styles at the end of styles.css; static for reduced-motion users).
+
+Photos: `site/img/gallery/` holds real company photos from SmugMug (commercial lift job, team photo). `site/img/stock/` holds free Unsplash photos (Unsplash License) used in service chips, service heroes, and gallery tiles, each labeled "Stock photo" on the page. Replace them with real job photos by overwriting the file with the same name, or edit `GALLERY` / service `photo` in content.py.
+
+Older lighthouse concept:
 New mark: the Jupiter Lighthouse with a gold brushstroke beam over Intracoastal waves. Source lives in `LOGO_INNER` in `build/build.py`. Files in `site/img/`: `logo.svg`, `logo-light.svg`, `logo-mark.svg`, `logo-mark-512.png`, `favicon.svg`, `apple-touch-icon.png`, `og-image.png`. Presented on `brand.html`.
 
 ## Design system

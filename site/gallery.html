@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://www.asyoulikeitpainting.com/gallery.html">
 <meta property="og:image" content="https://www.asyoulikeitpainting.com/img/og-image.png">
 <meta name="theme-color" content="#12302c">
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,20 +34,25 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="As You Like It Painting Company, home">
-      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
-  <rect x="2" y="2" width="44" height="44" rx="11" fill="#1f4a44"/>
-  <path d="M21.5 12.6C28 10.2 35 8.4 42.4 7.6c1.4 1.3 1.5 3.4.2 4.8-7.2.6-14.2 2-21.1 4.1z" fill="#e0a526"/>
-  <path d="M33 10.2l9.6-1.3M35 13.4l7.4-.6" stroke="#f3c75a" stroke-width=".9" stroke-linecap="round"/>
-  <path d="M14.6 11.2L19 6.8l4.4 4.4z" fill="#f7f3ec"/>
-  <rect x="16" y="11.2" width="6" height="4.4" rx=".8" fill="#e0a526"/>
-  <rect x="14.4" y="15.4" width="9.2" height="1.8" rx=".9" fill="#f7f3ec"/>
-  <path d="M16.2 17.2h5.6l2.7 19.6h-11z" fill="#b23e27"/>
-  <path d="M15.4 23h7.2l.4 3h-8z" fill="#f7f3ec"/>
-  <rect x="17.8" y="30.6" width="2.4" height="6.2" rx="1.2" fill="#12302c"/>
-  <path d="M7 38.4c2.6-1.8 5.4-1.8 8 0s5.4 1.8 8 0 5.4-1.8 8 0 5.4 1.8 8 0" stroke="#9db3a6" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <path d="M11 42.4c2.6-1.6 5.4-1.6 8 0s5.4 1.6 8 0 5.4-1.6 8 0" stroke="#9db3a6" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".6"/>
-</svg>
-      <span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span>
+      <span class="brand__logo-wrap"><img class="brand__logo" src="img/logo-icon.png" width="235" height="301" alt=""></span>
+      <span class="brand__text">
+        <span class="brand__name">As You Like It</span>
+        <span class="brand__paint" aria-hidden="true">
+          <svg class="brand__stroke-svg" viewBox="0 0 150 12" preserveAspectRatio="none">
+            <defs><linearGradient id="bp-h" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#2493aa"/><stop offset=".55" stop-color="#f2a032"/><stop offset="1" stop-color="#dc4a30"/>
+            </linearGradient></defs>
+            <path class="brand__stroke" d="M4 7.2C28 4.2 52 9.6 78 6.6S124 5 146 6.4" stroke="url(#bp-h)" pathLength="100"/>
+          </svg>
+          <svg class="brand__brush" viewBox="0 0 32 32">
+            <rect x="17.5" y="1" width="5" height="15" rx="2.5" transform="rotate(28 20 8.5)" fill="#064d6f"/>
+            <rect x="12.2" y="12.6" width="7.4" height="5" rx="1" transform="rotate(28 16 15)" fill="#9aa7ad"/>
+            <path d="M9.6 17.4l6.6 3.5-2.3 5.6c-.7 1.6-2.8 2.1-4.6 1.2-1.8-1-2.4-3-1.7-4.6z" fill="#f2a032"/>
+            <path d="M8.2 24.6c-.6 1.4-.2 2.6 1 3.2" stroke="#dc4a30" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="brand__sub">Painting Company</span>
+      </span>
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -72,43 +77,45 @@
 <section class="page-hero">
   <div class="page-hero__stripe" aria-hidden="true"><span style="background:#1f4a44"></span><span style="background:#9db3a6"></span><span style="background:#ebe2d1"></span><span style="background:#e0a526"></span><span style="background:#b23e27"></span><span style="background:#23344f"></span></div>
   <div class="wrap">
+    <div class="page-hero__text">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Our work</li></ol></nav>
     <p class="eyebrow">Our work</p>
     <h1>Recent projects</h1>
-    <p class="lede">A sample of jobs from around North County. The full archive of photos lives on our gallery site.</p>
+    <p class="lede">Real jobs from our crews, plus sample photos of the work we do while we add more of our own. The full archive lives on our gallery site.</p>
     
+    </div>
   </div>
 </section>
 <section class="section"><div class="wrap">
   <div class="filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="interior" aria-pressed="false">Interior</button><button type="button" data-filter="exterior" aria-pressed="false">Exterior</button><button type="button" data-filter="cabinets" aria-pressed="false">Cabinets</button><button type="button" data-filter="faux" aria-pressed="false">Faux &amp; graining</button><button type="button" data-filter="commercial" aria-pressed="false">Commercial</button></div>
   <p class="note" id="gallery-count" aria-live="polite">Showing 9 projects</p>
-  <div class="gallery"><figure class="tile reveal" data-cat="exterior">
-  <div class="photo-slot" style="--slot:#1f4a44"><!-- PHOTO SLOT: img/gallery/exterior-jupiter.jpg --></div>
-  <figcaption><b>Full exterior repaint</b><span>Jupiter</span></figcaption>
-</figure><figure class="tile reveal" data-cat="interior">
-  <div class="photo-slot" style="--slot:#d9cbb1"><!-- PHOTO SLOT: img/gallery/interior-pbg.jpg --></div>
-  <figcaption><b>Living room and kitchen</b><span>Palm Beach Gardens</span></figcaption>
-</figure><figure class="tile reveal" data-cat="cabinets">
-  <div class="photo-slot" style="--slot:#23344f"><!-- PHOTO SLOT: img/gallery/cabinets-tequesta.jpg --></div>
-  <figcaption><b>Kitchen cabinets, wood to white</b><span>Tequesta</span></figcaption>
-</figure><figure class="tile reveal" data-cat="faux">
-  <div class="photo-slot" style="--slot:#6b4a2f"><!-- PHOTO SLOT: img/gallery/faux-garage.jpg --></div>
-  <figcaption><b>Faux wood grain garage door</b><span>Jupiter Farms</span></figcaption>
-</figure><figure class="tile reveal" data-cat="commercial">
-  <div class="photo-slot" style="--slot:#b7a98f"><!-- PHOTO SLOT: img/gallery/condo-juno.jpg --></div>
-  <figcaption><b>Condo common areas</b><span>Juno Beach</span></figcaption>
+  <div class="gallery"><figure class="tile reveal" data-cat="commercial">
+  <div class="photo-slot"><img src="img/gallery/commercial-lift.jpg" alt="As You Like It painters on a boom lift repainting a stucco office building, company truck parked out front" loading="lazy" decoding="async"></div>
+  <figcaption><b>Commercial repaint</b><span>Our crew on site</span></figcaption>
 </figure><figure class="tile reveal" data-cat="exterior">
-  <div class="photo-slot" style="--slot:#9db3a6"><!-- PHOTO SLOT: img/gallery/stucco-npb.jpg --></div>
-  <figcaption><b>Stucco repair and repaint</b><span>North Palm Beach</span></figcaption>
-</figure><figure class="tile reveal" data-cat="faux">
-  <div class="photo-slot" style="--slot:#8a7660"><!-- PHOTO SLOT: img/gallery/faux-door.jpg --></div>
-  <figcaption><b>Front entry door graining</b><span>Palm Beach</span></figcaption>
+  <div class="photo-slot"><img src="img/stock/gal-ext-1.jpg" alt="Modern white stucco home with a pool" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Stucco exterior</b><span>Exterior painting</span></figcaption>
 </figure><figure class="tile reveal" data-cat="interior">
-  <div class="photo-slot" style="--slot:#ece4d4"><!-- PHOTO SLOT: img/gallery/ceiling-stuart.jpg --></div>
-  <figcaption><b>Popcorn removal and repaint</b><span>Stuart</span></figcaption>
+  <div class="photo-slot"><img src="img/stock/gal-int-1.jpg" alt="Bright living room with freshly painted walls" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Open living and dining</b><span>Interior painting</span></figcaption>
+</figure><figure class="tile reveal" data-cat="cabinets">
+  <div class="photo-slot"><img src="img/stock/gal-cab.jpg" alt="Kitchen with white painted cabinets" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>White kitchen cabinets</b><span>Cabinet refinishing</span></figcaption>
+</figure><figure class="tile reveal" data-cat="faux">
+  <div class="photo-slot"><img src="img/stock/gal-faux.jpg" alt="Living room with a wood-grain feature wall" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Wood-tone feature wall</b><span>Faux finishes</span></figcaption>
+</figure><figure class="tile reveal" data-cat="exterior">
+  <div class="photo-slot"><img src="img/stock/gal-ext-2.jpg" alt="Two-story home exterior with fresh paint" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Two-story repaint</b><span>Exterior painting</span></figcaption>
+</figure><figure class="tile reveal" data-cat="interior">
+  <div class="photo-slot"><img src="img/stock/gal-int-2.jpg" alt="Sunny living room with white walls" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Living room refresh</b><span>Interior painting</span></figcaption>
+</figure><figure class="tile reveal" data-cat="interior">
+  <div class="photo-slot"><img src="img/stock/gal-int-3.jpg" alt="Minimal room with white walls and a yellow chair" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Clean white walls and trim</b><span>Interior painting</span></figcaption>
 </figure><figure class="tile reveal" data-cat="commercial">
-  <div class="photo-slot" style="--slot:#7b8285"><!-- PHOTO SLOT: img/gallery/office-wpb.jpg --></div>
-  <figcaption><b>Office repaint</b><span>West Palm Beach</span></figcaption>
+  <div class="photo-slot"><img src="img/stock/svc-commercial.jpg" alt="Multi-story condominium building" loading="lazy" decoding="async"><span class="photo-slot__tag">Stock photo</span></div>
+  <figcaption><b>Condo and HOA buildings</b><span>HOA & commercial</span></figcaption>
 </figure></div>
   <div class="review-cta" style="margin-top:2.5rem">
     <p>Want to see more? Browse the full photo archive.</p>
@@ -132,19 +139,27 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
-  <rect x="2" y="2" width="44" height="44" rx="11" fill="#1f4a44"/>
-  <path d="M21.5 12.6C28 10.2 35 8.4 42.4 7.6c1.4 1.3 1.5 3.4.2 4.8-7.2.6-14.2 2-21.1 4.1z" fill="#e0a526"/>
-  <path d="M33 10.2l9.6-1.3M35 13.4l7.4-.6" stroke="#f3c75a" stroke-width=".9" stroke-linecap="round"/>
-  <path d="M14.6 11.2L19 6.8l4.4 4.4z" fill="#f7f3ec"/>
-  <rect x="16" y="11.2" width="6" height="4.4" rx=".8" fill="#e0a526"/>
-  <rect x="14.4" y="15.4" width="9.2" height="1.8" rx=".9" fill="#f7f3ec"/>
-  <path d="M16.2 17.2h5.6l2.7 19.6h-11z" fill="#b23e27"/>
-  <path d="M15.4 23h7.2l.4 3h-8z" fill="#f7f3ec"/>
-  <rect x="17.8" y="30.6" width="2.4" height="6.2" rx="1.2" fill="#12302c"/>
-  <path d="M7 38.4c2.6-1.8 5.4-1.8 8 0s5.4 1.8 8 0 5.4-1.8 8 0 5.4 1.8 8 0" stroke="#9db3a6" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-  <path d="M11 42.4c2.6-1.6 5.4-1.6 8 0s5.4 1.6 8 0 5.4-1.6 8 0" stroke="#9db3a6" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".6"/>
-</svg><span class="brand__text"><span class="brand__name">As You Like It</span><span class="brand__sub">Painting Company</span></span></a>
+        <a class="brand" href="index.html">
+      <span class="brand__logo-wrap"><img class="brand__logo" src="img/logo-icon.png" width="235" height="301" alt=""></span>
+      <span class="brand__text">
+        <span class="brand__name">As You Like It</span>
+        <span class="brand__paint" aria-hidden="true">
+          <svg class="brand__stroke-svg" viewBox="0 0 150 12" preserveAspectRatio="none">
+            <defs><linearGradient id="bp-f" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#2493aa"/><stop offset=".55" stop-color="#f2a032"/><stop offset="1" stop-color="#dc4a30"/>
+            </linearGradient></defs>
+            <path class="brand__stroke" d="M4 7.2C28 4.2 52 9.6 78 6.6S124 5 146 6.4" stroke="url(#bp-f)" pathLength="100"/>
+          </svg>
+          <svg class="brand__brush" viewBox="0 0 32 32">
+            <rect x="17.5" y="1" width="5" height="15" rx="2.5" transform="rotate(28 20 8.5)" fill="#064d6f"/>
+            <rect x="12.2" y="12.6" width="7.4" height="5" rx="1" transform="rotate(28 16 15)" fill="#9aa7ad"/>
+            <path d="M9.6 17.4l6.6 3.5-2.3 5.6c-.7 1.6-2.8 2.1-4.6 1.2-1.8-1-2.4-3-1.7-4.6z" fill="#f2a032"/>
+            <path d="M8.2 24.6c-.6 1.4-.2 2.6 1 3.2" stroke="#dc4a30" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="brand__sub">Painting Company</span>
+      </span>
+    </a>
         <p>Family-owned interior and exterior painting for homes, condos, HOAs, and commercial properties across Palm Beach and Martin County since 1983.</p>
         <p class="mb-0"><a href="tel:+15615027288"><strong>(561) 502-7288</strong></a> (call or text)<br><a href="mailto:tim@asyoulikeitpainting.com">tim@asyoulikeitpainting.com</a></p>
       </div>

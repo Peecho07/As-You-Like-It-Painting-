@@ -533,3 +533,97 @@ a.contact-card:hover { border-color: var(--inlet); color: var(--ink); }
 .brand-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
 .brand-page-h2 { margin-top: 2rem; }
 @media (max-width: 760px) { .brand-notes { grid-template-columns: 1fr; } }
+
+/* ---------- Header brand: company logo + animated brush ---------- */
+.brand { gap: .75rem; }
+.brand__logo-wrap { flex: none; display: grid; place-items: center; width: 50px; height: 56px; }
+.brand__logo { width: auto; height: 56px; display: block; transition: transform .35s var(--ease); }
+.brand:hover .brand__logo { transform: rotate(-4deg) scale(1.04); }
+.brand__text { position: relative; }
+.brand__name { font-size: 1.3rem; }
+.brand__paint { position: relative; display: block; width: 100%; height: 10px; margin: 2px 0 1px; }
+.brand__stroke-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.brand__stroke { fill: none; stroke-width: 4.5; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100;
+  animation: brand-paint 7s var(--ease) .4s infinite; }
+.brand__brush { position: absolute; top: -17px; left: 0; width: 24px; height: 24px; opacity: 0;
+  animation: brand-brush 7s var(--ease) .4s infinite; transform-origin: 30% 90%; }
+@keyframes brand-paint {
+  0% { stroke-dashoffset: 100; opacity: 1; }
+  22% { stroke-dashoffset: 0; }
+  86% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes brand-brush {
+  0% { left: -4px; opacity: 0; transform: rotate(-8deg); }
+  3% { opacity: 1; }
+  8% { transform: rotate(6deg); }
+  14% { transform: rotate(-6deg); }
+  22% { left: calc(100% - 14px); opacity: 1; transform: rotate(4deg); }
+  28%, 100% { left: calc(100% - 14px); opacity: 0; transform: rotate(0); }
+}
+.brand__sub { margin-top: 0; }
+.footer-brand .brand__logo-wrap { background: #fff; border-radius: 12px; width: 58px; height: 64px; }
+.footer-brand .brand__logo { height: 52px; }
+@media (max-width: 560px) {
+  .brand__logo-wrap { width: 40px; height: 46px; } .brand__logo { height: 46px; }
+  .brand__name { font-size: 1.1rem; } .brand__sub { font-size: .64rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand__stroke { animation: none; stroke-dashoffset: 0; }
+  .brand__brush { display: none; }
+}
+
+/* ---------- Service chips with photos ---------- */
+.chip__swatch { height: 176px; background: var(--swatch); isolation: isolate; }
+.chip__swatch img { position: absolute; inset: 0; width: 100%; height: calc(100% - 14px); object-fit: cover; display: block;
+  transition: transform .5s var(--ease); }
+.chip:hover .chip__swatch img { transform: scale(1.04); }
+.chip__swatch::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--swatch);
+  box-shadow: 0 -1px 0 rgba(255,255,255,.6); }
+.chip__badge { position: absolute; right: 12px; bottom: 24px; z-index: 1; width: 48px; height: 48px; border-radius: 10px;
+  display: grid; place-items: center; color: #fff; border: 2px solid #fff; box-shadow: 0 6px 16px rgba(20,35,31,.28); }
+.chip__badge svg { position: static; width: 24px; height: 24px; color: inherit; }
+.chip__badge--light { color: var(--ink); }
+.chip__swatch svg { right: auto; bottom: auto; }
+
+/* Photo slots holding real images */
+.photo-slot:has(img) { background: var(--sand); }
+.photo-slot__cap { position: absolute; left: 0; bottom: 0; z-index: 1; color: #fff; }
+.photo-slot__tag { position: absolute; top: .6rem; right: .6rem; z-index: 1; padding: .2rem .55rem; border-radius: 999px;
+  background: rgba(255,255,255,.88); color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .04em; }
+.team-photo { margin: 0 0 1.75rem; }
+.team-photo .photo-slot { aspect-ratio: 7 / 6; box-shadow: var(--shadow); }
+.team-photo .photo-slot img { object-position: center 30%; }
+.team-photo figcaption { margin-top: .6rem; font-size: var(--step--1); color: var(--muted); }
+
+/* ---------- Page hero with photo ---------- */
+.page-hero__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.page-hero--photo h1 { max-width: 16ch; }
+.page-hero__media { margin: 0; background: var(--paper); padding: 10px 10px 0; border-radius: 12px; box-shadow: var(--shadow); transform: rotate(1.2deg); }
+.page-hero__img { position: relative; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; background: var(--sand); }
+.page-hero__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.page-hero__chipbar { display: flex; height: 16px; margin: 10px -10px 0; border-radius: 0 0 12px 12px; overflow: hidden; }
+.page-hero__chipbar span { flex: 1; }
+@media (max-width: 860px) {
+  .page-hero__grid { grid-template-columns: 1fr; }
+  .page-hero__media { transform: none; max-width: 560px; }
+}
+
+/* ---------- Gallery alignment ---------- */
+.gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.tile { display: flex; flex-direction: column; }
+.tile figcaption { flex: 1; }
+.tile figcaption b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
+.brand-show__stage--white { background: #fff !important; }
+.brand-show__full { width: min(320px, 80%); height: auto; }
+.brand-show .brand__logo-wrap { width: 64px; height: 72px; } .brand-show .brand__logo { height: 72px; }
+.brand-show__stage--dark.footer-brand .brand__logo-wrap { width: 70px; height: 78px; } .brand-show__stage--dark.footer-brand .brand__logo { height: 64px; }
+.brand-show__stage--dark .brand { margin-bottom: 0; }
+.brand-alt { display: grid; grid-template-columns: 220px 1fr; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+.brand-alt .brand-show__stage { padding: 1.25rem; background: var(--sand); }
+.brand-alt .brand-show__mark { width: 150px; }
+.brand-alt p { margin: 0; color: var(--muted); }
+.brand-alt .btn-row { grid-column: 1 / -1; }
+@media (max-width: 640px) { .brand-alt { grid-template-columns: 1fr; } }
