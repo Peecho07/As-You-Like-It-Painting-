@@ -268,7 +268,7 @@ def chip_card(s, i):
     ink = "chip__swatch--light" if _is_light(base) else ""
     return f"""<a class="chip reveal" href="{s['slug']}.html">
   <div class="chip__swatch chip__swatch--paint {ink}" style="--swatch:{base};--swatch-deep:{scheme[0]}">
-    <span class="chip__swatch-label">{s['swatch']}<small>{base.upper()}</small></span>
+    <span class="chip__photo"><img src="img/colors/{s['slug']}.jpg" alt="" loading="lazy" decoding="async" width="900" height="600"></span>
     <span class="chip__badge{light}">{icon(s['icon'])}</span>
     <span class="chip__scheme" aria-hidden="true">{strip}</span>
   </div>
