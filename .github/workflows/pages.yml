@@ -27,9 +27,16 @@ jobs:
           python-version: "3.12"
       - name: Build pages
         run: python3 build/build.py
+      # Publish the site at the root AND under /site/, so links work whether
+      # Pages serves this workflow's output or the branch (where it lives in site/).
+      - name: Assemble output
+        run: |
+          mkdir -p _out
+          cp -r site/. _out/
+          cp -r site _out/site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _out
       - id: deployment
         uses: actions/deploy-pages@v4
