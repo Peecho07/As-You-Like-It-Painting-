@@ -21,7 +21,11 @@ document.documentElement.classList.remove("no-js");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
   if (!toggle || !nav) return;
+  const header = document.querySelector(".site-header");
   const setOpen = (open) => {
+    if (open && header) {
+      document.documentElement.style.setProperty("--nav-top", Math.max(0, header.getBoundingClientRect().bottom) + "px");
+    }
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     nav.classList.toggle("is-open", open);

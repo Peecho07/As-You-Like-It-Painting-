@@ -124,9 +124,10 @@ ul { padding-left: 1.2em; }
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: rgba(247, 243, 236, .94);
-  backdrop-filter: saturate(1.2) blur(8px);
   border-bottom: 1px solid var(--line);
 }
+/* Blur lives on a pseudo-element: backdrop-filter on the header itself would trap the fixed mobile menu inside it */
+.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; backdrop-filter: saturate(1.2) blur(8px); -webkit-backdrop-filter: saturate(1.2) blur(8px); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--ink); }
 .brand:hover { color: var(--ink); }
@@ -160,6 +161,8 @@ ul { padding-left: 1.2em; }
 }
 .dropdown a:hover { background: var(--gesso); color: var(--ink); }
 .dropdown .chip-dot { width: 22px; height: 22px; border-radius: 4px; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.dropdown__all svg { width: 16px; height: 16px; flex: none; transition: transform .2s var(--ease); }
+.dropdown__all:hover svg { transform: translateX(3px); }
 .dropdown__all { grid-column: 1 / -1; border-top: 1px solid var(--line); margin-top: .35rem; padding-top: .6rem !important; color: var(--beacon) !important; }
 .nav__cta { margin-left: .5rem; }
 .nav-toggle {
@@ -171,7 +174,7 @@ ul { padding-left: 1.2em; }
 @media (max-width: 1020px) {
   .nav-toggle { display: inline-flex; }
   .nav {
-    position: fixed; inset: 116px 0 0 0; background: var(--gesso);
+    position: fixed; inset: var(--nav-top, 116px) 0 0 0; background: var(--gesso); z-index: 60;
     flex-direction: column; align-items: stretch; padding: 1rem 1.25rem 7rem; overflow-y: auto;
     transform: translateX(100%); visibility: hidden;
     transition: transform .25s var(--ease), visibility 0s linear .25s;
@@ -183,7 +186,7 @@ ul { padding-left: 1.2em; }
   .nav__cta { margin: 1rem 0 0; width: 100%; }
   body.nav-open { overflow: hidden; }
 }
-@media (max-width: 760px) { .nav { inset: 76px 0 0 0; } }
+
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 7vw, 6rem); }
@@ -627,3 +630,18 @@ a.contact-card:hover { border-color: var(--inlet); color: var(--ink); }
 .brand-alt p { margin: 0; color: var(--muted); }
 .brand-alt .btn-row { grid-column: 1 / -1; }
 @media (max-width: 640px) { .brand-alt { grid-template-columns: 1fr; } }
+
+/* ---------- Service chips: paint color schemes ---------- */
+.chip__swatch--paint { height: 176px; background: var(--swatch); display: flex; flex-direction: column; justify-content: space-between;
+  box-shadow: inset 0 0 0 1px rgba(20,35,31,.12); }
+.chip__swatch--paint::after { display: none; }
+.chip__swatch-label { position: relative; z-index: 1; padding: .8rem .9rem 0; color: #fff; font-family: var(--font-display); font-size: 1.15rem; line-height: 1.1;
+  display: flex; flex-direction: column; gap: .2rem; text-shadow: 0 1px 2px rgba(0,0,0,.18); }
+.chip__swatch-label small { font-family: var(--font-body); font-size: .7rem; font-weight: 700; letter-spacing: .12em; opacity: .9; }
+.chip__swatch--light .chip__swatch-label { color: var(--ink); text-shadow: none; }
+.chip__swatch--paint .chip__badge { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.85); color: #fff; bottom: 50px; box-shadow: none; }
+.chip__swatch--light .chip__badge { background: rgba(255,255,255,.55); border-color: var(--swatch-deep); color: var(--swatch-deep); }
+.chip__scheme { display: flex; gap: 3px; height: 38px; padding: 3px; background: #fff; }
+.chip__scheme span { flex: 1; border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(20,35,31,.08); }
+.chip:hover .chip__scheme span:nth-child(3) { transform: translateY(-3px); }
+.chip__scheme span { transition: transform .2s var(--ease); }

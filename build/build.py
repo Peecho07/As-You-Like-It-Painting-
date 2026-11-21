@@ -17,7 +17,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent / "site"
 
 def icon(name, cls=""):
     c = f' class="{cls}"' if cls else ""
-    return (f'<svg{c} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+    return (f'<svg{c} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
             f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
 
 
@@ -246,12 +246,31 @@ def page_hero(eyebrow, title, lede, crumbs, buttons=True, palette=None, photo=No
 """
 
 
+def _mix(hex_color, target, amt):
+    h = hex_color.lstrip("#")
+    r, g, bl = (int(h[k:k + 2], 16) for k in (0, 2, 4))
+    t = 255 if target == "white" else 0
+    return "#%02x%02x%02x" % tuple(round(v + (t - v) * amt) for v in (r, g, bl))
+
+
+def _is_light(hex_color):
+    h = hex_color.lstrip("#")
+    r, g, bl = (int(h[k:k + 2], 16) / 255 for k in (0, 2, 4))
+    return (0.2126 * r + 0.7152 * g + 0.0722 * bl) > 0.55
+
+
 def chip_card(s, i):
-    light = " chip__badge--light" if s.get("light") else ""
+    base = s["color"]
+    # paint-strip scheme: two deeper shades, the base color, two lighter tints
+    scheme = [_mix(base, "black", .38), _mix(base, "black", .18), base, _mix(base, "white", .35), _mix(base, "white", .62)]
+    strip = "".join(f'<span style="background:{c}"></span>' for c in scheme)
+    light = " chip__badge--light" if _is_light(base) else ""
+    ink = "chip__swatch--light" if _is_light(base) else ""
     return f"""<a class="chip reveal" href="{s['slug']}.html">
-  <div class="chip__swatch" style="--swatch:{s['color']}">
-    <img src="{s['photo']}" alt="" loading="lazy" decoding="async" width="1200" height="800">
-    <span class="chip__badge{light}" style="background:{s['color']}">{icon(s['icon'])}</span>
+  <div class="chip__swatch chip__swatch--paint {ink}" style="--swatch:{base};--swatch-deep:{scheme[0]}">
+    <span class="chip__swatch-label">{s['swatch']}<small>{base.upper()}</small></span>
+    <span class="chip__badge{light}">{icon(s['icon'])}</span>
+    <span class="chip__scheme" aria-hidden="true">{strip}</span>
   </div>
   <div class="chip__body">
     <span class="chip__no">No. {i:02d} &middot; {s['swatch']}</span>
