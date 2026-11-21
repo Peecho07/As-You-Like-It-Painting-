@@ -57,7 +57,9 @@ Business facts in markup (phone, license numbers, links) come from `BIZ` in `bui
 6. **Fonts.** Young Serif + Figtree load from Google Fonts.
 
 ## Deploy (GitHub Pages)
-GitHub Pages only serves from the repo root or `/docs`. Either rename `site/` to `docs/` (and update `ROOT` in build.py), or use a Pages GitHub Action that publishes `site/`. On Netlify, set the publish directory to `site`.
+`.github/workflows/pages.yml` rebuilds the pages and publishes `site/` on every push to `main`.
+One-time setup: repo **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+Live URL: `https://<your-username>.github.io/<repo-name>/`. For a custom domain (asyoulikeitpainting.com), add it under Settings > Pages and point DNS at GitHub.
 
 ## Logo
 New mark: the Jupiter Lighthouse with a gold brushstroke beam over Intracoastal waves. Source lives in `LOGO_INNER` in `build/build.py`. Files in `site/img/`: `logo.svg`, `logo-light.svg`, `logo-mark.svg`, `logo-mark-512.png`, `favicon.svg`, `apple-touch-icon.png`, `og-image.png`. Presented on `brand.html`.
