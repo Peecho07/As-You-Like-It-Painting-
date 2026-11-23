@@ -656,3 +656,21 @@ a.contact-card:hover { border-color: var(--inlet); color: var(--ink); }
 
 /* Demo banner */
 .demo-banner { background: #f2c14e; color: var(--ink); text-align: center; font-weight: 700; font-size: .9rem; letter-spacing: .04em; padding: 8px 16px; border-bottom: 2px solid var(--ink); }
+
+/* Bigger header logo */
+.brand { gap: .9rem; }
+.brand__logo-wrap { width: 66px; height: 84px; }
+.brand__logo { height: 84px; }
+.brand__name { font-size: 1.65rem; white-space: nowrap; }
+.brand__sub { font-size: .82rem; }
+@media (max-width: 760px) {
+  .brand__logo-wrap { width: 48px; height: 62px; }
+  .brand__logo { height: 62px; }
+  .brand__name { font-size: 1.25rem; }
+  .brand__sub { font-size: .68rem; }
+}
+.brand__name { font-size: 1.45rem; }
+.brand__sub { font-size: .74rem; letter-spacing: .13em; }
+@media (min-width: 761px) { .brand__logo-wrap { width: 62px; height: 78px; } .brand__logo { height: 78px; } }
+@media (min-width: 761px) and (max-width: 1180px) { .brand__name { font-size: 1.25rem; } .brand__sub { display: none; } }
+@media (max-width: 760px) { .brand__name { font-size: 1.25rem; } .brand__sub { font-size: .68rem; } }
