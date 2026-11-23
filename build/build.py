@@ -96,6 +96,7 @@ def head(title, desc, path, extra=""):
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="demo-banner" role="note">Demo by tsKaizen</div>
 """
 
 

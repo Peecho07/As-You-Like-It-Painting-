@@ -653,3 +653,6 @@ a.contact-card:hover { border-color: var(--inlet); color: var(--ink); }
 .chip__swatch--paint .chip__badge, .chip__swatch--light .chip__badge { background: var(--swatch); border-color: #fff; box-shadow: 0 4px 12px rgba(20,35,31,.25); }
 .chip__swatch--paint .chip__badge { color: #fff; }
 .chip__swatch--light .chip__badge { color: var(--ink); }
+
+/* Demo banner */
+.demo-banner { background: #f2c14e; color: var(--ink); text-align: center; font-weight: 700; font-size: .9rem; letter-spacing: .04em; padding: 8px 16px; border-bottom: 2px solid var(--ink); }
