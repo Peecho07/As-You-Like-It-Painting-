@@ -59,7 +59,7 @@ Business facts in markup (phone, license numbers, links) come from `BIZ` in `bui
 ## Deploy (GitHub Pages)
 `.github/workflows/pages.yml` rebuilds the pages and publishes `site/` on every push to `main`.
 One-time setup: repo **Settings > Pages > Build and deployment > Source: GitHub Actions**.
-Live URL: `https://<your-username>.github.io/<repo-name>/`. For a custom domain (asyoulikeitpainting.com), add it under Settings > Pages and point DNS at GitHub.
+Live URL: `https://peecho07.github.io/asyoulikeitpaintingdemo/`. For a custom domain (asyoulikeitpainting.com), add it under Settings > Pages and point DNS at GitHub.
 
 ## Logo and photos
 Header and footer use the company's own logo (`site/img/logo-icon.png`, cropped from `logo-full.png`), with an animated brush that paints a stroke under the name (`brand_lockup()` in build.py, styles at the end of styles.css; static for reduced-motion users).
